@@ -1,5 +1,6 @@
 package br.senai.sp.jandira.game.Model;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Register {
@@ -18,14 +19,32 @@ public class Register {
      */
     Enemy enemy = new Enemy();
 
+
+    /**
+     * Instancia Output
+     */
+    Output output = new Output();
+
+
     public String choice;
 
-    public void choices(){
-        System.out.println("Welcome to the game!");
-        System.out.print("Escolha quem quer cadastrar (Player | Enemy | Both): ");
+    int validPrint = 0;
+
+    public String choiceRegister;
+
+    public void choices() {
+        System.out.println("+______________________________________________________+");
+        System.out.println("|             E T E R N A L   K O M B A T              |");
+        System.out.println("+______________________________________________________+");
+        System.out.println("|         W E L C O M E  T O  T H E  G A M E !         |");
+        System.out.println("+______________________________________________________+");
+        System.out.println(" ");
+
+        System.out.print("| Choose who you want to register (Player | Enemy | Both)|");
+        System.out.println(" ");
         choice = teclado.nextLine();
 
-        switch (choice){
+        switch (choice.toLowerCase()) {
             case "Player":
                 PlayerRegister();
                 break;
@@ -35,34 +54,43 @@ public class Register {
             case "Both":
                 bothRegister();
                 break;
-
-            default:
-                System.out.println("Choose one option!");
-
         }
-
     }
+
     public void PlayerRegister() {
-        System.out.println("-------------------- Cadastro Player ---------------------");
-        System.out.print("Informe o seu nome:");
+        System.out.println("+---------------- PLAYER'S REGISTER ----------------------+");
+        System.out.print("| What's the Player's name: ");
         player.name = teclado.nextLine();
-        System.out.print("Escolha sua skin (red - blue - purple) : ");
+        System.out.print("| Choose one skin (red - blue - purple) : ");
         player.skin = teclado.nextLine();
-        System.out.println("--------------- Player Cadastrado com Sucesso ------------");
+        System.out.println("+------------ PLAYER REGISTED WITH SUCCES ----------------+");
+        System.out.println(" ");
+
+        /** PRINTA AS INFORMAÇÕES CADASTRADAS*/
+        if (validPrint != 1) {
+            output.PrintPlayer(player);
+        }
     }
 
     public void EnemyRegister() {
         //Coleta de dados do Enemy-1
-        System.out.println("-------------------- Cadastro Enemy ---------------------");
-        System.out.print("Informe o seu nome:");
-        enemy.name = teclado.nextLine();
-        System.out.print("Escolha sua skin (red - blue - purple) : ");
-        enemy.skin = teclado.nextLine();
-        System.out.println("--------------- Enemy Cadastrado com Sucesso ------------");
+        System.out.println("+---------------- ENEMY'S REGISTER ----------------------+");
+        System.out.print("| What's the Enemy's name: ");
+        player.name = teclado.nextLine();
+        System.out.print("| Choose one skin (red - blue - purple) : ");
+        player.skin = teclado.nextLine();
+        System.out.println("+------------ ENEMY REGISTED WITH SUCCES ----------------+");
+        System.out.println(" ");
+
+        if (validPrint != 1) {
+            output.PrintEnemy(enemy);
+
+        }
     }
     public void bothRegister() {
+        validPrint = 1;
         PlayerRegister();
         EnemyRegister();
+        output.PrintBoth(player, enemy);
     }
-
 }
