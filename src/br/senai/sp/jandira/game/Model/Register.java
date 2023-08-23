@@ -32,14 +32,9 @@ public class Register {
 
     public String choiceRegister;
 
-    public void choices() {
-        System.out.println("+______________________________________________________+");
-        System.out.println("|             E T E R N A L   K O M B A T              |");
-        System.out.println("+______________________________________________________+");
-        System.out.println("|         W E L C O M E  T O  T H E  G A M E !         |");
-        System.out.println("+______________________________________________________+");
-        System.out.println(" ");
 
+
+    public void choices() {
         System.out.print("| Choose who you want to register (Player | Enemy | Both)|");
         System.out.println(" ");
         choice = teclado.nextLine();
@@ -55,9 +50,16 @@ public class Register {
                 bothRegister();
                 break;
         }
+        System.out.println(" ");
+        System.out.print("| Do you want to do another register? [1 = yes  2 = no]|");
+        int continueRegister = teclado.nextInt();
+
+        if (continueRegister == 1){
+            choices();
+        }
     }
 
-    public void PlayerRegister() {
+    public Player PlayerRegister() {
         System.out.println("+---------------- PLAYER'S REGISTER ----------------------+");
         System.out.print("| What's the Player's name: ");
         player.name = teclado.nextLine();
@@ -70,9 +72,10 @@ public class Register {
         if (validPrint != 1) {
             output.PrintPlayer(player);
         }
+         return player;
     }
 
-    public void EnemyRegister() {
+    public Enemy EnemyRegister() {
         //Coleta de dados do Enemy-1
         System.out.println("+---------------- ENEMY'S REGISTER ----------------------+");
         System.out.print("| What's the Enemy's name: ");
@@ -84,11 +87,11 @@ public class Register {
 
         if (validPrint != 1) {
             output.PrintEnemy(enemy);
-
         }
+        return enemy;
     }
     public void bothRegister() {
-        validPrint = 1;
+        validPrint = 0;
         PlayerRegister();
         EnemyRegister();
         output.PrintBoth(player, enemy);
