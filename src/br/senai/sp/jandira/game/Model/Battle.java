@@ -45,9 +45,7 @@ public class Battle {
 
             System.out.println("+------------------- B A T T L E ------------------+");
             System.out.println("| Player's attack [ E ]" + player.name + "PLAYER'S LIFE: " + lifePlayer);
-            System.out.println("| Player's defense [ W ]" + player.name);
             System.out.println("| Enemy's attack [ L ]" + enemy.name + "ENEMY'S LIFE: " + lifeEnemy);
-            System.out.println("| Enemy's defense [ P ]" + enemy.name);
             System.out.println("+--------------------------------------------------+");
             String attack = teclado.next();
 
@@ -60,10 +58,10 @@ public class Battle {
                 if (realDano < 0){
                     realDano = 0;
                 }
-                enemy.lifeAttack(danoPlayer);
+                enemy.lifeAttack(realDano);
 
                 System.out.println(" ");
-                System.out.println(" (>‘.’)> ︻┳═ 一  PLAYER'S ATTACK: " + danoPlayer);
+                System.out.println(" (>‘.’)> ︻┳═ 一  PLAYER'S ATTACK: " + realDano);
 
             } else if (attack.equalsIgnoreCase("L")) {
                 int danoEnemy = (int) (Math.random() * 20) + 1;
@@ -74,10 +72,10 @@ public class Battle {
                 if (realDano < 0){
                     realDano = 0;
                 }
-                player.lifeAttack(danoEnemy);
+                player.lifeAttack(realDano);
 
                 System.out.println(" ");
-                System.out.println(" (>‘.’)> ︻┳═ 一  ENEMY'S ATTACK: " + danoEnemy);
+                System.out.println(" (>‘.’)> ︻┳═ 一  ENEMY'S ATTACK: " + realDano);
 
             } else {
                 System.out.println("Non-valid key! testet");
