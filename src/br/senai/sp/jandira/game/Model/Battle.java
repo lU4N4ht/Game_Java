@@ -53,13 +53,27 @@ public class Battle {
 
             if (attack.equalsIgnoreCase("E")) {
                 int danoPlayer = (int) (Math.random() * 20) + 1;
+                int defesaEnemy = (int) (Math.random() * 20) + 1;
 
+                int realDano = danoPlayer - defesaEnemy;
+
+                if (realDano < 0){
+                    realDano = 0;
+                }
                 enemy.lifeAttack(danoPlayer);
+
                 System.out.println(" ");
                 System.out.println(" (>‘.’)> ︻┳═ 一  PLAYER'S ATTACK: " + danoPlayer);
 
             } else if (attack.equalsIgnoreCase("L")) {
                 int danoEnemy = (int) (Math.random() * 20) + 1;
+                int defesaPlayer = (int) (Math.random() * 20) + 1;
+
+                int realDano = danoEnemy - defesaPlayer;
+
+                if (realDano < 0){
+                    realDano = 0;
+                }
                 player.lifeAttack(danoEnemy);
 
                 System.out.println(" ");

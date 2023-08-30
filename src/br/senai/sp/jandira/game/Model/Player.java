@@ -4,7 +4,6 @@ public class Player {
     public String name;
     public String skin;
      private int lifePlayer;
-
     public  Player(){
         lifePlayer = 100;
     }
@@ -19,5 +18,4 @@ public class Player {
             lifePlayer = 0;
         }
     }
-
 }
