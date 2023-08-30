@@ -8,45 +8,38 @@ public class Register {
      * instancia Scanner
      */
     Scanner teclado = new Scanner(System.in);
-
     /**
      * Instancia Player
      */
     Player player = new Player();
-
     /**
      * Instancia Enemy
      */
     Enemy enemy = new Enemy();
 
-
     /**
      * Instancia Output
      */
     Output output = new Output();
-
-
     public String choice;
-
     int validPrint = 0;
-
     public String choiceRegister;
 
 
-
     public void choices() {
-        System.out.print("| Choose who you want to register (Player | Enemy | Both)|");
-        System.out.println(" ");
+        System.out.println("| Choose who you want to register (Player | Enemy | Both)|");
         choice = teclado.nextLine();
+        System.out.println(" ");
+
 
         switch (choice.toLowerCase()) {
-            case "Player":
+            case "player":
                 PlayerRegister();
                 break;
-            case "Enemy":
+            case "enemy":
                 EnemyRegister();
                 break;
-            case "Both":
+            case "both":
                 bothRegister();
                 break;
         }
@@ -91,9 +84,10 @@ public class Register {
         return enemy;
     }
     public void bothRegister() {
-        validPrint = 0;
+        validPrint = 1;
         PlayerRegister();
         EnemyRegister();
-        output.PrintBoth(player, enemy);
+        output.PrintEnemy(enemy);
+        output.PrintPlayer(player);
     }
 }

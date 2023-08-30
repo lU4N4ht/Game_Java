@@ -8,8 +8,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        //Instanciando a classe Menu
 
-        //Instancia Menu
         Menu menu = new Menu();
         menu.Menu();
 

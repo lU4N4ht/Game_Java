@@ -13,4 +13,14 @@ public class Enemy {
 
         return  lifeEnemy;
     }
+    public void lifeAttack(int danoPlayer){
+        lifeEnemy -= danoPlayer;
+
+        if (lifeEnemy < 0){
+            lifeEnemy = 0;
+        }
+    }
+
+
+
 }

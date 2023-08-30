@@ -1,7 +1,6 @@
 package br.senai.sp.jandira.game.Model;
 
 import java.util.Scanner;
-
 public class Battle {
 
     //Criando Variáveis
@@ -20,6 +19,7 @@ public class Battle {
         System.out.println("| 1 - Living Forest....................................|");
         System.out.println("| 2 - Evil Tower.......................................|");
         System.out.println("| 3 - Dead Pool........................................|");
+        System.out.println("| Default - Portal Wave................................|");
         System.out.println("+______________________________________________________+");
         int choiceScenario = teclado.nextInt();
 
@@ -29,8 +29,45 @@ public class Battle {
 
     }
     public void Battle(Player player , Enemy enemy){
-        System.out.println(player);
-        System.out.println(enemy);
-    }
 
+        while (true) {
+
+            int lifePlayer = player.getLife();
+            int lifeEnemy = enemy.getLife();
+
+            if (lifePlayer == 0) {
+                System.out.println("PLAYER'S WIN ᕙ(`▿´)ᕗ");
+                break;
+            } else if (lifeEnemy == 0) {
+                System.out.println("ENEMY'S WIN (⌐■_■)");
+                break;
+            }
+
+            System.out.println("+------------------- B A T T L E ------------------+");
+            System.out.println("| Player's attack [ E ]" + player.name + "PLAYER'S LIFE: " + lifePlayer);
+            System.out.println("| Player's defense [ W ]" + player.name);
+            System.out.println("| Enemy's attack [ L ]" + enemy.name + "ENEMY'S LIFE: " + lifeEnemy);
+            System.out.println("| Enemy's defense [ P ]" + enemy.name);
+            System.out.println("+--------------------------------------------------+");
+            String attack = teclado.next();
+
+            if (attack.equalsIgnoreCase("E")) {
+                int danoPlayer = (int) (Math.random() * 20) + 1;
+
+                enemy.lifeAttack(danoPlayer);
+                System.out.println(" ");
+                System.out.println(" (>‘.’)> ︻┳═ 一  PLAYER'S ATTACK: " + danoPlayer);
+
+            } else if (attack.equalsIgnoreCase("L")) {
+                int danoEnemy = (int) (Math.random() * 20) + 1;
+                player.lifeAttack(danoEnemy);
+
+                System.out.println(" ");
+                System.out.println(" (>‘.’)> ︻┳═ 一  ENEMY'S ATTACK: " + danoEnemy);
+
+            } else {
+                System.out.println("Non-valid key! testet");
+            }
+        }
+    }
 }
